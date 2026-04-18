@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520" font-family="-apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2d3748"/>
+    </marker>
+    <style>
+      .t-main { font-size: 18px; font-weight: 700; fill: #1a202c; }
+      .t-sub { font-size: 12px; fill: #718096; font-style: italic; }
+      .lane { font-size: 12px; font-weight: 700; letter-spacing: 1px; }
+      .nt { font-size: 12px; font-weight: 700; fill: #1a202c; }
+      .ns { font-size: 10.5px; fill: #4a5568; }
+      .tag { font-size: 10px; font-weight: 600; }
+    </style>
+  </defs>
+
+  <text x="500" y="32" class="t-main" text-anchor="middle">
+    Motivating example: baseline vs. guixcoder-enhanced feedback loop
+  </text>
+  <text x="500" y="52" class="t-sub" text-anchor="middle">
+    Instruction: "search page for a stock database, show friendly 'no match' error when the code does not exist"
+  </text>
+
+  <!-- Baseline lane -->
+  <rect x="40" y="78" width="920" height="180" rx="10" fill="#fff5f5" stroke="#c53030" stroke-width="1.5"/>
+  <text x="60" y="100" class="lane" fill="#c53030">BASELINE · --baseline flag (text-only VLM feedback)</text>
+
+  <!-- Baseline steps -->
+  <g>
+    <rect x="60" y="120" width="150" height="65" rx="8" fill="#ffffff" stroke="#c53030"/>
+    <text x="135" y="141" class="nt" text-anchor="middle">Step 1</text>
+    <text x="135" y="158" class="ns" text-anchor="middle">LLM writes search page.</text>
+    <text x="135" y="172" class="ns" text-anchor="middle">Empty state missing.</text>
+    <text x="135" y="178" class="tag" text-anchor="middle" fill="#c53030">✗ grade 2</text>
+  </g>
+  <line x1="212" y1="152" x2="238" y2="152" stroke="#2d3748" marker-end="url(#arr2)"/>
+
+  <g>
+    <rect x="240" y="120" width="150" height="65" rx="8" fill="#ffffff" stroke="#c53030"/>
+    <text x="315" y="141" class="nt" text-anchor="middle">Step 2</text>
+    <text x="315" y="158" class="ns" text-anchor="middle">VLM: "red error box".</text>
+    <text x="315" y="172" class="ns" text-anchor="middle">LLM edits wrong file.</text>
+    <text x="315" y="178" class="tag" text-anchor="middle" fill="#c53030">✗ grade 2</text>
+  </g>
+  <line x1="392" y1="152" x2="418" y2="152" stroke="#2d3748" marker-end="url(#arr2)"/>
+
+  <g>
+    <rect x="420" y="120" width="150" height="65" rx="8" fill="#ffffff" stroke="#c53030"/>
+    <text x="495" y="141" class="nt" text-anchor="middle">Step 3</text>
+    <text x="495" y="158" class="ns" text-anchor="middle">Tries different component.</text>
+    <text x="495" y="172" class="ns" text-anchor="middle">Still no empty-state UI.</text>
+    <text x="495" y="178" class="tag" text-anchor="middle" fill="#c53030">✗ grade 2</text>
+  </g>
+  <line x1="572" y1="152" x2="598" y2="152" stroke="#2d3748" marker-end="url(#arr2)"/>
+
+  <g>
+    <rect x="600" y="120" width="150" height="65" rx="8" fill="#ffffff" stroke="#c53030"/>
+    <text x="675" y="141" class="nt" text-anchor="middle">Step 4</text>
+    <text x="675" y="158" class="ns" text-anchor="middle">Adds banner globally.</text>
+    <text x="675" y="172" class="ns" text-anchor="middle">Breaks home page.</text>
+    <text x="675" y="178" class="tag" text-anchor="middle" fill="#c53030">✗ grade 2</text>
+  </g>
+  <line x1="752" y1="152" x2="778" y2="152" stroke="#2d3748" marker-end="url(#arr2)"/>
+
+  <g>
+    <rect x="780" y="120" width="160" height="65" rx="8" fill="#fff5f5" stroke="#c53030" stroke-dasharray="4 3"/>
+    <text x="860" y="141" class="nt" text-anchor="middle">Step 5+</text>
+    <text x="860" y="158" class="ns" text-anchor="middle">Hits error_limit,</text>
+    <text x="860" y="172" class="ns" text-anchor="middle">backtracks. Cost ↑.</text>
+    <text x="860" y="178" class="tag" text-anchor="middle" fill="#c53030">✗ no finish</text>
+  </g>
+
+  <text x="60" y="225" class="ns" fill="#c53030" font-weight="700">
+    Why baseline stalls: VLM only says <tspan font-style="italic">what</tspan> is wrong, not <tspan font-style="italic">where</tspan>. LLM edits the wrong file, burns iterations.
+  </text>
+  <text x="60" y="243" class="ns" fill="#c53030">
+    Final state after 20 iter: screenshot grade 2 · task not finished.
+  </text>
+
+  <!-- Enhanced lane -->
+  <rect x="40" y="278" width="920" height="200" rx="10" fill="#f0fff4" stroke="#38a169" stroke-width="1.5"/>
+  <text x="60" y="300" class="lane" fill="#276749">GUIxcoder · --structured flag (DOM→code grounded feedback)</text>
+
+  <g>
+    <rect x="60" y="320" width="180" height="80" rx="8" fill="#ffffff" stroke="#38a169"/>
+    <text x="150" y="342" class="nt" text-anchor="middle">Step 1</text>
+    <text x="150" y="359" class="ns" text-anchor="middle">LLM writes search page.</text>
+    <text x="150" y="373" class="ns" text-anchor="middle">Empty state missing.</text>
+    <text x="150" y="388" class="ns" text-anchor="middle" fill="#276749">Feedback: "add empty-state</text>
+    <text x="150" y="400" class="ns" text-anchor="middle" fill="#276749">to SearchResultPage.jsx:82"</text>
+  </g>
+  <line x1="242" y1="360" x2="268" y2="360" stroke="#2d3748" marker-end="url(#arr2)"/>
+
+  <g>
+    <rect x="270" y="320" width="180" height="80" rx="8" fill="#ffffff" stroke="#38a169"/>
+    <text x="360" y="342" class="nt" text-anchor="middle">Step 2</text>
+    <text x="360" y="359" class="ns" text-anchor="middle">LLM targets exact file:line.</text>
+    <text x="360" y="373" class="ns" text-anchor="middle">Adds {notFound &amp;&amp; ...} block.</text>
+    <text x="360" y="388" class="ns" text-anchor="middle" fill="#276749">VLM: message renders,</text>
+    <text x="360" y="400" class="tag" text-anchor="middle" fill="#276749">✓ grade 4</text>
+  </g>
+  <line x1="452" y1="360" x2="478" y2="360" stroke="#2d3748" marker-end="url(#arr2)"/>
+
+  <g>
+    <rect x="480" y="320" width="180" height="80" rx="8" fill="#ffffff" stroke="#38a169"/>
+    <text x="570" y="342" class="nt" text-anchor="middle">Step 3</text>
+    <text x="570" y="359" class="ns" text-anchor="middle">Screenshot validated.</text>
+    <text x="570" y="373" class="ns" text-anchor="middle">GUI probing passes.</text>
+    <text x="570" y="388" class="tag" text-anchor="middle" fill="#276749">✓ grade 5</text>
+    <text x="570" y="400" class="tag" text-anchor="middle" fill="#276749">boltAction type="finish"</text>
+  </g>
+  <line x1="662" y1="360" x2="688" y2="360" stroke="#2d3748" marker-end="url(#arr2)"/>
+
+  <g>
+    <rect x="690" y="320" width="250" height="80" rx="8" fill="#fefcbf" stroke="#d69e2e"/>
+    <text x="815" y="345" class="nt" text-anchor="middle">Result</text>
+    <text x="815" y="364" class="ns" text-anchor="middle">Finished in 3 iterations.</text>
+    <text x="815" y="380" class="ns" text-anchor="middle">Every edit localised by</text>
+    <text x="815" y="394" class="ns" text-anchor="middle">guixcoder (file:line:snippet).</text>
+  </g>
+
+  <text x="60" y="428" class="ns" fill="#276749" font-weight="700">
+    Why guixcoder wins: every VLM observation is appended with "→ Code: file:line-line" pointing at the exact JSX node.
+  </text>
+  <text x="60" y="446" class="ns" fill="#276749">
+    No guessing, no wrong-file edits; iteration count drops from 20 (unfinished) to 3 (finished, grade 5).
+  </text>
+  <text x="60" y="464" class="ns" fill="#276749" font-style="italic">
+    (See examples/motivating_example/ for reproducible run commands.)
+  </text>
+</svg>

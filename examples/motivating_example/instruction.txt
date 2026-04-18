@@ -1,0 +1,1 @@
+Build a small single-page React + Vite site that lets users search a (hard-coded) stock database by ticker. When the ticker is not found, the search results page must render a friendly empty-state message "No stock found — try AAPL or MSFT" together with a link back to the home page. Style: white background, navy accents.
