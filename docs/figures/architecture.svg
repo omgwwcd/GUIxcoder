@@ -1,158 +1,70 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 640" font-family="-apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 340" font-family="-apple-system, 'Segoe UI', Arial, sans-serif">
   <defs>
     <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
       <path d="M 0 0 L 10 5 L 0 10 z" fill="#2d3748"/>
     </marker>
-    <marker id="arr-mute" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#718096"/>
-    </marker>
-    <marker id="arr-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#38a169"/>
+    <marker id="arr-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2f855a"/>
     </marker>
     <style>
-      .title { font-size: 19px; font-weight: 700; fill: #1a202c; }
-      .subtitle { font-size: 12px; fill: #718096; font-style: italic; }
-      .lane { font-size: 11px; font-weight: 700; fill: #4a5568; letter-spacing: 1.2px; }
-      .node-title { font-size: 13px; font-weight: 700; fill: #1a202c; }
-      .node-sub { font-size: 11px; fill: #4a5568; }
-      .edge-label { font-size: 10.5px; fill: #4a5568; }
-      .pkg-title { font-size: 13px; font-weight: 700; fill: #276749; }
-      .pkg-sub { font-size: 10.5px; fill: #2f855a; }
-      .highlight { font-size: 11px; font-weight: 600; fill: #276749; }
+      .title { font-size: 17px; font-weight: 700; fill: #1a202c; }
+      .box-title { font-size: 13px; font-weight: 600; fill: #1a202c; }
+      .pkg-title { font-size: 14px; font-weight: 700; fill: #276749; }
+      .sub { font-size: 11px; fill: #4a5568; }
+      .g-sub { font-size: 11px; fill: #2f855a; }
     </style>
   </defs>
 
-  <text x="500" y="32" class="title" text-anchor="middle">
-    GUIxcoder: A Web-Generation Agent with DOM→Code Structured Feedback
-  </text>
-  <text x="500" y="52" class="subtitle" text-anchor="middle">
-    Baseline iterative loop (black) · guixcoder structured-feedback package (green)
-  </text>
+  <text x="450" y="28" class="title" text-anchor="middle">GUIxcoder — DOM→Code structured feedback for web-generation agents</text>
 
-  <!-- ==== Lane 1: Agent iterative loop ==== -->
-  <line x1="40" y1="88" x2="960" y2="88" stroke="#e2e8f0" stroke-dasharray="2 4"/>
-  <text x="52" y="82" class="lane">AGENT · ITERATIVE GENERATION LOOP</text>
+  <!-- Main loop: 5 boxes -->
+  <rect x="30" y="70" width="130" height="60" rx="8" fill="#edf2f7" stroke="#4a5568" stroke-width="1.3"/>
+  <text x="95" y="96" class="box-title" text-anchor="middle">Instruction</text>
+  <text x="95" y="114" class="sub" text-anchor="middle">natural language</text>
 
-  <!-- Instruction -->
-  <rect x="60" y="108" width="150" height="70" rx="10" fill="#edf2f7" stroke="#4a5568" stroke-width="1.5"/>
-  <text x="135" y="133" class="node-title" text-anchor="middle">Instruction</text>
-  <text x="135" y="152" class="node-sub" text-anchor="middle">natural-language</text>
-  <text x="135" y="168" class="node-sub" text-anchor="middle">website spec</text>
+  <rect x="190" y="70" width="130" height="60" rx="8" fill="#ebf8ff" stroke="#3182ce" stroke-width="1.3"/>
+  <text x="255" y="96" class="box-title" text-anchor="middle">Code-gen LLM</text>
+  <text x="255" y="114" class="sub" text-anchor="middle">writes JSX / CSS</text>
 
-  <line x1="212" y1="143" x2="268" y2="143" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="350" y="70" width="130" height="60" rx="8" fill="#fffaf0" stroke="#dd6b20" stroke-width="1.3"/>
+  <text x="415" y="96" class="box-title" text-anchor="middle">Build + serve</text>
+  <text x="415" y="114" class="sub" text-anchor="middle">npm run dev</text>
 
-  <!-- LLM code gen -->
-  <rect x="270" y="108" width="170" height="70" rx="10" fill="#ebf8ff" stroke="#3182ce" stroke-width="1.5"/>
-  <text x="355" y="133" class="node-title" text-anchor="middle">Code-gen LLM</text>
-  <text x="355" y="152" class="node-sub" text-anchor="middle">&lt;boltAction&gt; files</text>
-  <text x="355" y="168" class="node-sub" text-anchor="middle">JSX / CSS / config</text>
+  <rect x="510" y="70" width="130" height="60" rx="8" fill="#fffaf0" stroke="#dd6b20" stroke-width="1.3"/>
+  <text x="575" y="96" class="box-title" text-anchor="middle">Screenshot</text>
+  <text x="575" y="114" class="sub" text-anchor="middle">headless Chrome</text>
 
-  <line x1="442" y1="143" x2="498" y2="143" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="670" y="70" width="200" height="60" rx="8" fill="#fefcbf" stroke="#d69e2e" stroke-width="1.3"/>
+  <text x="770" y="96" class="box-title" text-anchor="middle">Feedback</text>
+  <text x="770" y="114" class="sub" text-anchor="middle">VLM text + file:line</text>
 
-  <!-- Build + serve -->
-  <rect x="500" y="108" width="170" height="70" rx="10" fill="#fffaf0" stroke="#dd6b20" stroke-width="1.5"/>
-  <text x="585" y="133" class="node-title" text-anchor="middle">Build + serve</text>
-  <text x="585" y="152" class="node-sub" text-anchor="middle">npm install</text>
-  <text x="585" y="168" class="node-sub" text-anchor="middle">npm run dev</text>
+  <line x1="162" y1="100" x2="188" y2="100" stroke="#2d3748" stroke-width="1.4" marker-end="url(#arr)"/>
+  <line x1="322" y1="100" x2="348" y2="100" stroke="#2d3748" stroke-width="1.4" marker-end="url(#arr)"/>
+  <line x1="482" y1="100" x2="508" y2="100" stroke="#2d3748" stroke-width="1.4" marker-end="url(#arr)"/>
+  <line x1="642" y1="100" x2="668" y2="100" stroke="#2d3748" stroke-width="1.4" marker-end="url(#arr)"/>
 
-  <line x1="672" y1="143" x2="728" y2="143" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arr)"/>
+  <!-- Loopback: feedback → LLM (next turn) -->
+  <path d="M 770 130 v 25 q 0 10 -10 10 h -495 q -10 0 -10 -10 v -25" fill="none" stroke="#2d3748" stroke-width="1.3" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+  <text x="495" y="182" class="sub" text-anchor="middle">next turn</text>
 
-  <!-- Screenshot -->
-  <rect x="730" y="108" width="170" height="70" rx="10" fill="#fffaf0" stroke="#dd6b20" stroke-width="1.5"/>
-  <text x="815" y="133" class="node-title" text-anchor="middle">Screenshot</text>
-  <text x="815" y="152" class="node-sub" text-anchor="middle">headless Chromium</text>
-  <text x="815" y="168" class="node-sub" text-anchor="middle">(Selenium)</text>
+  <!-- guixcoder package container -->
+  <rect x="30" y="220" width="840" height="100" rx="10" fill="#f0fff4" stroke="#38a169" stroke-width="1.8"/>
+  <text x="50" y="244" class="pkg-title">guixcoder package</text>
+  <text x="50" y="260" class="g-sub">augments Feedback when use_structured_feedback=True</text>
 
-  <!-- ==== Lane 2: Feedback comparison ==== -->
-  <line x1="40" y1="208" x2="960" y2="208" stroke="#e2e8f0" stroke-dasharray="2 4"/>
-  <text x="52" y="202" class="lane">FEEDBACK · BASELINE (TOP) vs. GUIxcoder (BOTTOM)</text>
+  <rect x="200" y="270" width="180" height="36" rx="6" fill="#ffffff" stroke="#38a169" stroke-width="1.3"/>
+  <text x="290" y="293" class="box-title" text-anchor="middle">CodeGraph (tree-sitter)</text>
 
-  <!-- Baseline row -->
-  <rect x="730" y="222" width="170" height="56" rx="8" fill="#fff5f5" stroke="#c53030" stroke-width="1.5"/>
-  <text x="815" y="243" class="node-title" text-anchor="middle">VLM describes page</text>
-  <text x="815" y="260" class="node-sub" text-anchor="middle">"red error box seen;</text>
-  <text x="815" y="272" class="node-sub" text-anchor="middle">no code location"</text>
+  <rect x="400" y="270" width="160" height="36" rx="6" fill="#ffffff" stroke="#38a169" stroke-width="1.3"/>
+  <text x="480" y="293" class="box-title" text-anchor="middle">DOM extractor</text>
 
-  <line x1="728" y1="250" x2="642" y2="250" stroke="#c53030" stroke-width="1.4" marker-end="url(#arr)"/>
+  <rect x="580" y="270" width="180" height="36" rx="6" fill="#ffffff" stroke="#38a169" stroke-width="1.3"/>
+  <text x="670" y="293" class="box-title" text-anchor="middle">DOM→Code Aligner</text>
 
-  <rect x="470" y="222" width="170" height="56" rx="8" fill="#fff5f5" stroke="#c53030" stroke-width="1.5" stroke-dasharray="0"/>
-  <text x="555" y="243" class="node-title" text-anchor="middle">Text-only feedback</text>
-  <text x="555" y="260" class="node-sub" text-anchor="middle">(next-turn LLM prompt)</text>
-  <text x="555" y="272" class="node-sub" text-anchor="middle">→ LLM guesses file</text>
+  <line x1="383" y1="288" x2="397" y2="288" stroke="#2f855a" stroke-width="1.4" marker-end="url(#arr-g)"/>
+  <line x1="563" y1="288" x2="577" y2="288" stroke="#2f855a" stroke-width="1.4" marker-end="url(#arr-g)"/>
 
-  <line x1="468" y1="250" x2="372" y2="250" stroke="#c53030" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#arr)"/>
-
-  <text x="302" y="247" class="node-sub" text-anchor="middle" font-style="italic">feed back to</text>
-  <text x="302" y="262" class="node-sub" text-anchor="middle" font-style="italic">Code-gen LLM</text>
-
-  <!-- ==== Lane 3: guixcoder package ==== -->
-  <line x1="40" y1="310" x2="960" y2="310" stroke="#e2e8f0" stroke-dasharray="2 4"/>
-  <text x="52" y="304" class="lane">GUIxcoder PACKAGE · DOM → CODE STRUCTURED ALIGNMENT</text>
-
-  <!-- Green container -->
-  <rect x="60" y="328" width="880" height="220" rx="14" fill="#f0fff4" stroke="#38a169" stroke-width="2"/>
-  <text x="500" y="352" class="pkg-title" text-anchor="middle">guixcoder (pip install -e .)</text>
-  <text x="500" y="368" class="pkg-sub" text-anchor="middle">
-    plugged into WebGenAgent.get_feedback() when use_structured_feedback=True
-  </text>
-
-  <!-- CodeGraph -->
-  <rect x="85" y="388" width="200" height="80" rx="10" fill="#ffffff" stroke="#38a169" stroke-width="1.5"/>
-  <text x="185" y="410" class="node-title" text-anchor="middle">CodeGraph</text>
-  <text x="185" y="428" class="node-sub" text-anchor="middle">tree-sitter AST of workspace</text>
-  <text x="185" y="444" class="node-sub" text-anchor="middle">nodes keyed by</text>
-  <text x="185" y="458" class="node-sub" text-anchor="middle">file:line_start–line_end</text>
-
-  <!-- DOM extractor -->
-  <rect x="305" y="388" width="200" height="80" rx="10" fill="#ffffff" stroke="#38a169" stroke-width="1.5"/>
-  <text x="405" y="410" class="node-title" text-anchor="middle">DOM extractor</text>
-  <text x="405" y="428" class="node-sub" text-anchor="middle">Chromium --dump-dom</text>
-  <text x="405" y="444" class="node-sub" text-anchor="middle">elements · classes · ids</text>
-  <text x="405" y="458" class="node-sub" text-anchor="middle">anomaly detection</text>
-
-  <!-- Aligner -->
-  <rect x="525" y="388" width="200" height="80" rx="10" fill="#ffffff" stroke="#38a169" stroke-width="1.5"/>
-  <text x="625" y="410" class="node-title" text-anchor="middle">Aligner</text>
-  <text x="625" y="428" class="node-sub" text-anchor="middle">rule-based (shipped)</text>
-  <text x="625" y="444" class="node-sub" text-anchor="middle">· contrastive model</text>
-  <text x="625" y="458" class="node-sub" text-anchor="middle">(Phase 2, stub)</text>
-
-  <!-- Enhanced feedback -->
-  <rect x="745" y="388" width="180" height="80" rx="10" fill="#fefcbf" stroke="#d69e2e" stroke-width="1.5"/>
-  <text x="835" y="410" class="node-title" text-anchor="middle">Enhanced feedback</text>
-  <text x="835" y="428" class="node-sub" text-anchor="middle">raw VLM text</text>
-  <text x="835" y="444" class="node-sub" text-anchor="middle">+ file:line</text>
-  <text x="835" y="458" class="node-sub" text-anchor="middle">+ code snippet</text>
-
-  <!-- Inside arrows -->
-  <line x1="288" y1="428" x2="302" y2="428" stroke="#38a169" stroke-width="1.5" marker-end="url(#arr-accent)"/>
-  <line x1="508" y1="428" x2="522" y2="428" stroke="#38a169" stroke-width="1.5" marker-end="url(#arr-accent)"/>
-  <line x1="728" y1="428" x2="742" y2="428" stroke="#38a169" stroke-width="1.5" marker-end="url(#arr-accent)"/>
-
-  <text x="295" y="485" class="edge-label" text-anchor="middle">+</text>
-  <text x="515" y="485" class="edge-label" text-anchor="middle">→</text>
-  <text x="735" y="485" class="edge-label" text-anchor="middle">→</text>
-
-  <!-- Down arrows: sources into CodeGraph / DOM -->
-  <line x1="355" y1="180" x2="185" y2="386" stroke="#718096" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#arr-mute)"/>
-  <text x="235" y="285" class="edge-label" fill="#718096" font-style="italic">generated files</text>
-
-  <line x1="815" y1="180" x2="405" y2="386" stroke="#718096" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#arr-mute)"/>
-  <text x="625" y="330" class="edge-label" fill="#718096" font-style="italic">live page</text>
-
-  <!-- Dashed outer arrow: enhanced feedback → next LLM turn -->
-  <path d="M 835 468 q 0 40 -60 40 l -470 0 q -40 0 -40 -40 l 0 -280" fill="none" stroke="#38a169" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arr-accent)"/>
-  <text x="540" y="598" class="highlight" text-anchor="middle">
-    next turn: LLM receives "error → SearchResultPage.jsx:82-84", no guessing required
-  </text>
-
-  <!-- Legend -->
-  <g transform="translate(60, 588)">
-    <rect x="0" y="0" width="12" height="12" fill="#fff5f5" stroke="#c53030"/>
-    <text x="20" y="10" class="edge-label">baseline (text only)</text>
-    <rect x="140" y="0" width="12" height="12" fill="#ffffff" stroke="#38a169"/>
-    <text x="160" y="10" class="edge-label">guixcoder package</text>
-    <rect x="290" y="0" width="12" height="12" fill="#fefcbf" stroke="#d69e2e"/>
-    <text x="310" y="10" class="edge-label">enhanced feedback</text>
-  </g>
+  <!-- Aligner → Feedback -->
+  <path d="M 760 288 h 40 q 15 0 15 -15 v -143" fill="none" stroke="#2f855a" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#arr-g)"/>
+  <text x="840" y="210" class="g-sub" text-anchor="middle">file:line</text>
 </svg>
